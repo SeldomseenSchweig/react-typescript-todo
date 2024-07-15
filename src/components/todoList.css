@@ -10,18 +10,6 @@ body {
   align-items: center;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
 .todos,
 .adder {
   padding: 20px;
@@ -29,7 +17,6 @@ body {
 
 .todos {
   background-color: #f0f8ff;
-  border-bottom: 1px solid #ddd;
 }
 
 .adder {
@@ -41,18 +28,15 @@ h2 {
   margin-top: 0;
 }
 
-.todo-list {
-  list-style-type: none;
-  padding: 0;
-}
-
 .todo-list li {
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+}
+.todo-list {
+  list-style-type: none;
 }
 
-#task {
-  width: calc(100% - 50px);
+.task {
+  width: calc(100% - 25px);
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -60,9 +44,9 @@ h2 {
 }
 
 .add-button {
-  margin-left: 10px;
+  margin: 10px;
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: #4c5caf;
   color: white;
   border: none;
   border-radius: 5px;
@@ -80,4 +64,123 @@ h2 {
   justify-content: space-between;
   padding: 10px;
   border-radius: 5px;
+}
+.task-container {
+  display: flex;
+  flex-direction: row;
+}
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+a:hover {
+  color: #222222;
+}
+
+.delete-button {
+  margin-left: 10px;
+}
+/* Dropdown */
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dd-button {
+  display: inline-block;
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 10px 30px 10px 20px;
+  background-color: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dd-button:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+}
+
+.dd-button:hover {
+  background-color: #eeeeee;
+}
+
+.dd-input {
+  display: none;
+}
+
+.dd-menu {
+  position: absolute;
+  top: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0;
+  margin: 2px 0 0 0;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  list-style-type: none;
+}
+
+.dd-input + .dd-menu {
+  display: none;
+}
+
+.dd-input:checked + .dd-menu {
+  display: block;
+}
+
+.dd-menu li {
+  padding: 10px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dd-menu li:hover {
+  background-color: #f6f6f6;
+}
+
+.dd-menu li a {
+  display: block;
+  margin: -10px -20px;
+  padding: 10px 20px;
+}
+
+.dd-menu li.divider {
+  padding: 0;
+  border-bottom: 1px solid #cccccc;
+}
+
+/* Priority Dropdown */
+
+.priority-dropdown {
+  margin-left: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.priority-dropdown:hover {
+  background-color: #eeeeee;
+}
+
+.medium {
+  background-color: lightgoldenrodyellow;
+}
+.low {
+  background-color: #4682b4;
+}
+.high {
+  background-color: lightcoral;
 }
