@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./todoList.css";
+import axios from "axios";
 
 const TodoList = (): any => {
   const [todoList, setTodoList] = useState<
@@ -8,6 +9,7 @@ const TodoList = (): any => {
   const [inputValue, setInputValue] = useState("");
   const [priority, setPriority] = useState<string>("");
   const [id, setId] = useState(0);
+  const [quotes, setQuotes] = useState<any>([]);
 
   const handleInputChange = (event: any) => {
     setInputValue(event.target.value);
@@ -19,6 +21,7 @@ const TodoList = (): any => {
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    getData();
     if (inputValue.trim() !== "" && priority.trim() !== "") {
       const todo = { id, priority, task: inputValue.trim() };
       setId(id + 1);
@@ -46,8 +49,24 @@ const TodoList = (): any => {
     }
   };
 
+  const getData = async () => {
+    try {
+      const response = await axios.get(
+        "https://ron-swanson-quotes.herokuapp.com/v2/quotes"
+      );
+      setQuotes(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
-    <div className="todoList-container">
+    <div className="todo-list-container">
+      <h1> {quotes}</h1>
       <div className="adder">
         <h2>Add Tasks here</h2>
         <form onSubmit={handleFormSubmit}>
